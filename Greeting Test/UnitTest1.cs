@@ -25,5 +25,12 @@ namespace Greeting_Test
             
             Assert.Equal("Hello, my friend.",_sut.Greet(null));
         }
+
+        [Fact]
+        public void AllCapitalGreet()
+        {
+            var result = _sut.Greet("JERRY");
+            Assert.Equal("HELLO, JERRY!", result);
+        }
     }
 }

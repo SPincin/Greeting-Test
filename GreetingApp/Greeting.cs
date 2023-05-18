@@ -10,9 +10,8 @@ namespace GreetingApp
     {
         public string Greet(string name)
         {
-             return name == null? "Hello, my friend." : $"Hello, {name}.";
+             return name == null? "Hello, my friend." : (name == name.ToUpper())? $"HELLO, {name}!" : $"Hello, {name}.";
           
-                      
         }
 
     }
