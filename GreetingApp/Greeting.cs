@@ -10,7 +10,10 @@ namespace GreetingApp
     {
         public string Greet(string name)
         {
-            return $"Hello, {name}.";
+             return name == null? "Hello, my friend." : $"Hello, {name}.";
+          
+                      
         }
+
     }
 }

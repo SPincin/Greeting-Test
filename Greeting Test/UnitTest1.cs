@@ -17,5 +17,13 @@ namespace Greeting_Test
             var result = _sut.Greet("Bob");
             Assert.Equal("Hello, Bob.", result);
         }
+
+        [Fact]
+
+        public void SimpleGreetNull() 
+        {
+            
+            Assert.Equal("Hello, my friend.",_sut.Greet(null));
+        }
     }
 }
