@@ -20,11 +20,14 @@ namespace GreetingApp
                        ? $"HELLO, {names[0]}!"
                        : $"Hello, {names[0]}.";
             }
-            else
+            if(names.Length == 2)
             {
                 return $"Hello, {names[0]} and {names[1]}.";
             }
-          
+
+            var pref = "Hello,";
+            var namesAggregate = names.SkipLast(1).Aggregate((prev, next) => $"{prev}, {next}");
+            return $"{pref} {namesAggregate}, and {names.Last()}.";
         }
 
     }

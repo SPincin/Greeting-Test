@@ -1,13 +1,16 @@
 using GreetingApp;
+using Xunit.Abstractions;
 
 namespace Greeting_Test
 {
     public class GreetingTest
     {
         private readonly Greeting _sut;
+        private readonly ITestOutputHelper _output;
 
-        public GreetingTest()
+        public GreetingTest(ITestOutputHelper output)
         {
+            _output = output;
             _sut = new Greeting();
         }
 
@@ -38,6 +41,20 @@ namespace Greeting_Test
         {
             var result = _sut.Greet("Jill", "Jane");
             Assert.Equal("Hello, Jill and Jane.", result);
+        }
+
+        [Fact]
+        public void GreetMultipleNames()
+        {
+            var result = _sut.Greet("Amy", "Brian", "Charlotte");
+            Assert.Equal("Hello, Amy, Brian, and Charlotte.", result);
+        }
+
+        [Fact]
+        public void Sandbox()
+        {
+            var result = _sut.Greet("Andrea", "Paperino", "Pluto");
+            _output.WriteLine(result);
         }
     }
 }
