@@ -51,6 +51,14 @@ namespace Greeting_Test
         }
 
         [Fact]
+
+        public void GreetSplit()
+        {
+            var result = _sut.Greet("Amy", "BRIAN", "Charlotte");
+            Assert.Equal("Hello Amy and Charlotte.AND HELLO BRIAN!",result);
+        }
+
+        [Fact]
         public void Sandbox()
         {
             var result = _sut.Greet("Andrea", "Paperino", "Pluto");
