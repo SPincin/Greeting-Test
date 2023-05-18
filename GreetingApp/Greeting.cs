@@ -8,9 +8,22 @@ namespace GreetingApp
 {
     public class Greeting
     {
-        public string Greet(string name)
+        public string Greet(params string[] names)
         {
-             return name == null? "Hello, my friend." : (name == name.ToUpper())? $"HELLO, {name}!" : $"Hello, {name}.";
+            if(names == null)
+            {
+                return "Hello, my friend.";
+            }
+            if (names.Length == 1)
+            {
+                return names[0] == names[0].ToUpper()
+                       ? $"HELLO, {names[0]}!"
+                       : $"Hello, {names[0]}.";
+            }
+            else
+            {
+                return $"Hello, {names[0]} and {names[1]}.";
+            }
           
         }
 

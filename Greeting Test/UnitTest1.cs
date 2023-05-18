@@ -32,5 +32,12 @@ namespace Greeting_Test
             var result = _sut.Greet("JERRY");
             Assert.Equal("HELLO, JERRY!", result);
         }
+
+        [Fact]
+        public void GreetTwoNames()
+        {
+            var result = _sut.Greet("Jill", "Jane");
+            Assert.Equal("Hello, Jill and Jane.", result);
+        }
     }
 }
