@@ -22,11 +22,18 @@ namespace GreetingApp
 
             if(names !=null && names.Length >= 2)
             {
+                if(names.Any(element=>element.Contains(@"""")))
+                        {
+                            var namesWithoutQuotes = names.Select(name => name.Replace("\"", "")).ToArray();
+                            return GreetBase(namesWithoutQuotes);
+                                
+                        }
                 var selectMany = names.SelectMany(name => name.Split(", ")).ToArray();
 
                 return GreetBase(selectMany);
                 
             }
+            
 
             return GreetBase(names);
         }

@@ -66,6 +66,14 @@ namespace Greeting_Test
         }
 
         [Fact]
+
+        public void GreetAllowEscapeCommas()
+        {
+            var result = _sut.Greet("Bob", "\"Charlie, Dianne\"");
+            Assert.Equal("Hello, Bob and Charlie, Dianne.", result);
+        }
+
+        [Fact]
         public void Sandbox()
         {
             var result = _sut.Greet("Andrea", "Paperino", "Pluto");
