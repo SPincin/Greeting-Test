@@ -14,16 +14,18 @@ namespace GreetingApp
 
             if (names != null && names.Length > 2 && names.Any(n => n.Equals(n.ToUpper())))
             {
-                var lowNames = new List<string>();
-                var upperName = string.Empty;
+                var isUpper = names.ToLookup(n => n.ToUpper()== n);
+                var resultLow = GreetBase(isUpper[false].ToArray());
+               
+                return $"{resultLow} AND HELLO {isUpper[true].First()}!";
+            }
 
-                foreach (var name in names)
-                {
-                    if (name.Equals(name.ToUpper())) upperName = name;
-                    else lowNames.Add(name);
-                }
-                var resultLow = GreetBase(lowNames.ToArray());
-                return $"{resultLow} AND HELLO {upperName}!";
+            if(names !=null && names.Length >= 2)
+            {
+                var selectMany = names.SelectMany(name => name.Split(", ")).ToArray();
+
+                return GreetBase(selectMany);
+                
             }
 
             return GreetBase(names);
@@ -52,6 +54,8 @@ namespace GreetingApp
                     var namesAggregate = names.SkipLast(1).Aggregate((prev, next) => $"{prev}, {next}");
                     return $"{pref} {namesAggregate}, and {names.Last()}.";
                 }
+
+               
 
             }
         }
